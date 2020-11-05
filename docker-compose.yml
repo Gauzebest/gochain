@@ -1,6 +1,21 @@
 version: '3.3'
 
+networks:
+ net:
+
+volumes:
+  vol:
+
 services:
+  data_base:
+    image: postgres
+    volumes:
+      - vol:/var/lib/postgresql/data/
+    networks:
+      - net
+    environment:
+      POSTGRES_PASSWORD: '1234qwerty'
+
   tp_docker:
     image: tp_docker_image
     build:
@@ -8,5 +23,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - '8000:8000'
+    networks:
+      - net
+    environment:
+      POSTGRES_URL: 'data_base'
+    depends_on:
+      - 'data_base'
 
 
