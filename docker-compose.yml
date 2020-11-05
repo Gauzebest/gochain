@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  tp_docker:
+    image: tp_docker_image
+    build:
+      context: .
+      dockerfile: Dockerfile
+
