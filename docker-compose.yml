@@ -5,6 +5,7 @@ networks:
 
 volumes:
   vol:
+    external: false
 
 services:
   data_base:
